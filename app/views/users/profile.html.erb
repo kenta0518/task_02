@@ -1,0 +1,59 @@
+<%= form_with model:@users do |f| %>
+    <div class="all-wrapper">
+        <div class="left-wrapper">
+            <ul>
+                <li><%= link_to("アカウント","/users/#{@user.id}/account")%></li>
+                <li><%= link_to("プロフィール","/users/#{@user.id}/profile")%></li>
+            </ul>
+        </div>
+        <div class="right-wrapper">
+            <div class="form-wrapper">
+                <div class="contents-wrapper">
+                    <p class="top-contents">プロフィール</p>
+                </div>
+
+                <div class="contents-wrapper">
+                    <div class="contents-row">
+                        <label class="span-contents"> </label>
+                        <div class="icon-contents">
+                            <img class="user_icon" src="<%= "/user_images/#{@user.image}" %>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contents-wrapper">
+                    <div class="contents-row">
+                        <label class="span-contents">アイコン画像 </label>
+                        <div class="email-contents">
+                            <%= f.file_field :image %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contents-wrapper">
+                    <div class="contents-row">
+                        <label class="span-contents">名前 </label>
+                        <div class="email-contents">
+                            <%= f.text_field :name,value: @user.name%>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contents-wrapper">
+                    <div class="contents-row">
+                        <label class="span-contents">自己紹介 </label>
+                        <div class="email-contents">
+                            <%= f.text_area :introduction,value: @user.introduction%>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contents-wrapper">
+                    <p class="top-contents">
+                        <%= f.submit "更新",class:"login-btn btn"  %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<%end%>

@@ -1,0 +1,66 @@
+<%= form_with model:@posts do |f| %>
+    <div class="all-wrapper">
+        <div class="left-wrapper">
+            <ul>
+            <li>基本情報</li>
+            </ul>
+        </div>
+        <div class="right-wrapper">
+            <div class="form-wrapper">
+                <div class="contents-wrapper">
+                    <p class="top-contents">ルーム情報登録</p>
+                </div>
+                <div class="contents-wrapper">
+                    <div class="contents-row">
+                        <label class="span-contents"> ルーム名</label>
+                        <div class="icon-contents">
+                            <%= f.text_field :r_name %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contents-wrapper">
+                    <div class="contents-row">
+                        <label class="span-contents">ルーム紹介 </label>
+                        <div class="email-contents">
+                            <%= f.text_area :r_introduction %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contents-wrapper">
+                    <div class="contents-row">
+                        <label class="span-contents">料金 </label>
+                        <div class="email-contents">
+                            <%= f.number_field :r_price %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contents-wrapper">
+                    <div class="contents-row">
+                        <label class="span-contents">住所 </label>
+                        <div class="email-contents">
+                            <%= f.text_field :r_adress %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contents-wrapper">
+                    <div class="contents-row">
+                        <label class="span-contents">ルーム画像 </label>
+                        <div class="email-contents">
+                            <%= f.file_field :r_image %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contents-wrapper">
+                    <p class="top-contents">
+                        <%= f.submit "登録",class:"login-btn btn"  %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<%end%>

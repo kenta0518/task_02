@@ -1,0 +1,24 @@
+<div class="reservations-index">
+    <table>
+        <thead>
+            <tr>
+                <th>ルーム画像</th>
+                <th>ルーム名</th>
+                <th>ルーム紹介</th>
+                <th>料金</th>
+                <th>登録日</th>
+            </tr>
+        </thead>
+        <% @user.posts.each do |post| %>
+        <tbody>
+                <tr>
+                    <td class="td-img"><%= link_to image_tag(post.r_image.url,class: "user_img-room"),"/posts/#{post.id}"%></td>
+                    <td class="td-posts-name"><%= post.r_name%></td>
+                    <td class="td-posts-content"><%= post.r_introduction%></td>
+                    <td class="td-price">¥<%= post.r_price%></td>
+                    <td><%= post.created_at.to_s(:datetime_jp)%></td>
+                </tr>
+        </tbody>
+        <% end %>
+    </table>
+</div>
