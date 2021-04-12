@@ -1,0 +1,31 @@
+<div class="reservations-index">
+    <table>
+        <thead>
+            <tr>
+                <th>ルーム画像</th>
+                <th>ルーム名</th>
+                <th>ルーム紹介</th>
+                <th>合計料金</th>
+                <th>開始日</th>
+                <th>終了日</th>
+                <th>予約確定日</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @reservations.each do |reservation| %>
+            <% @posts = Post.where(id: reservation.post_id) %>
+            <% @posts.each do |post| %>
+                <tr>
+                    <td class="td-img"><%= link_to image_tag(post.r_image.url,class: "user_img-room"),"/posts/#{post.id}"%></td>
+                    <td class="td-posts-name"><%= post.r_name%></td>
+                    <td class="td-posts-content"><%= post.r_introduction%></td>
+                    <td class="td-price">¥<%= reservation.total_price %></td>
+                    <td class="td-start"><%= reservation.start_date.to_s(:datetime_jp)%></td>
+                    <td class="td-end"><%= reservation.end_date.to_s(:datetime_jp)%></td>
+                    <td class="td-date"><%= post.created_at.to_s(:datetime_jp)%></td>
+                </tr>
+            <%end%>
+        <% end %>
+        </tbody>
+    </table>
+</div>

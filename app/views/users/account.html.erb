@@ -1,0 +1,34 @@
+<div class="all-wrapper">
+    <div class="left-wrapper">
+        <ul>
+            <li><%= link_to("アカウント","/users/#{@user.id}/account")%></li>
+            <li><%= link_to("プロフィール","/users/#{@user.id}/profile")%></li>
+        </ul>
+    </div>
+
+    <div class="right-wrapper">
+        <div class="form-wrapper">
+            <div class="contents-wrapper">
+                <p class="top-contents">アカウント</p>
+            </div>
+
+            <div class="contents-wrapper">
+                <div class="contents-row">
+                    <label class="span-contents">メールアドレス </label>
+                    <div class="email-contents"><%= @user.email%></div>
+                </div>
+            </div>
+
+            <div class="contents-wrapper">
+                <div class="contents-row">
+                    <label class="span-contents">パスワード </label>
+                    <div class="email-contents">＊＊＊＊＊＊＊＊</div>
+                </div>
+            </div>
+
+            <div class="contents-wrapper">
+                <%= link_to("編集","/users/#{@user.id}/edit",class:"login-btn btn")%>
+            </div>
+        </div>
+    </div>
+</div>

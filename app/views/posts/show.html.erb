@@ -1,0 +1,54 @@
+<div class="room-show">
+    <div class="room_top">
+        <h1 class="room_title"><%=@post.r_name%></h1>
+        <p class="room_address"><%= @post.r_adress%></p>
+    </div>
+    <div class="room-contents">
+        <div class="room_info">
+            <%= image_tag @post.r_image.url,class:"room_image"%>
+            <div class="room_show_contents">
+                <div class="room_image_wrapper">
+                    <img class="room_icon" src="<%="/user_images/#{@user.image}"%>">
+                </div>
+                <div class="room_">
+                    <p class="room_name"><%= @user.name%>さんのお部屋</p>
+                    <p class="room_user_introduction"><%= @user.introduction%></p>
+                </div>
+            </div>
+                <div class="room_comment">
+                    <p><%= @post.r_introduction%></p>
+                </div>
+        </div>
+        <%= form_with(url: "reservations/#{@post.id}/new" , method: :get) do |f| %>
+            <div class="room_info2">
+                <div class="room_info_main">
+                    <div class="room_info_navi">
+                        <p class="price_navi"><%="¥#{@post.r_price} / 日 "%></p>
+                            <div class="room_form-group">
+                                <label for="start_day">開始日</label>
+                                <%= f.date_field :start_date,class:"room_form" %>
+                            </div>
+                            <div class="room_form-group">
+                                <label for="end_day">終了日</label>
+                                <%= f.date_field :end_date ,class:"room_form" %>
+                            </div>
+                            <div class="room_form-group">
+                                <label for="number_of_people">人数</label>
+                                <%= f.number_field :people ,class:"room_form" %>
+                            </div>
+                        <%= f.hidden_field :user_id,:value => @current_user.id%>
+                        <%= f.hidden_field :post_id,:value => @post.id%>
+                        <%= f.hidden_field :p1_price,:value => @post.r_price%>
+                        <div class="contents-wrapper">
+                            <p class="top-contents">
+                            <%= f.submit "予約する",class:"login-btn btn" %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <%end%>
+    </div>
+</div>
+
+

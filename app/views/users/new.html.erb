@@ -1,0 +1,33 @@
+<%= form_with url:users_create_path do |f| %>
+    <div class="form-container">
+        <div class="form-main">
+        <p>新しいアカウントを作成</p>
+        <%= flash[:notice] %>
+            <div class="form-inner">
+                <% @user.errors.full_messages.each do |message| %>
+                    <div class="form-error">
+                        <%= message %>
+                    </div>
+                <% end %>
+                    <div class="form-group">
+                        <span class="form-red">必須</span>
+                        <%= f.text_field :name,placeholder: "ユーザー名",value: @user.name,class:'form-one'  %>
+                    </div>
+                    <div class="form-group">
+                        <span class="form-red">必須</span>
+                        <%= f.text_field :email,placeholder: "メールアドレス",value: @user.email ,class:'form-one' %>
+                    </div>
+                    <div class="form-group">
+                        <span class="form-red">必須</span>
+                        <%= f.password_field :password,placeholder: "パスワード",class:'form-one' %>
+                    </div>
+                    <div class="form-group">
+                        <span class="form-red">必須</span>
+                        <%= f.password_field :password_confirmation,placeholder: "パスワード（確認）",class:'form-one' %>
+                    </div>
+            </div>
+            <%= f.submit '新しいアカウントを作成', class: 'btn login-btn login-btn-a' %>
+            <p class="login-btn-b"><a href="/login">すでにアカウントをお持ちの方はログイン</a></p>
+        </div>
+    </div>
+<% end %>

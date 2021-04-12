@@ -1,0 +1,21 @@
+<div class="container-room">
+    <h2>検索結果</h2>
+    <div class="main-room">
+        <% @posts.each do |post| %>
+            <div class="outer-room">
+                <div class="inner-room">
+                    <%= link_to("/posts/#{post.id}",class:"no-underline") do %>
+                    <div class="img-form-room">
+                        <%= image_tag post.r_image.url,class: "img-room"%>
+                    </div>
+                    <div class="info-room">
+                        <p class="room-name"><%= post.r_name %></p>
+                        <p class="room-country"><%= post.r_adress%></p>
+                        <p class="room-price"><%= post.r_price %></p>
+                    </div>
+                    <%end%>
+                </div>
+            </div>
+        <%end%>
+    </div>
+</div>

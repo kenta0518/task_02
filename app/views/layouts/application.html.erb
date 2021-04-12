@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Task02</title>
+    <title>LodgingApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,54 @@
   </head>
 
   <body>
-    <%= yield %>
+
+  <header>
+  <div class="header">
+    <div class="header-left"><%= link_to image_tag("logo.png"), "/" %>
+    <div class="header-left-form">
+    <%= form_with(url: posts_search_path,method: :get,local: true) do |f|%>
+  <%= f.text_field :free, placeholder:"キーワード" %>
+  <%= f.submit '検索する', name: nil %>
+    <% end %>
+    
+    </div>
+</div>
+
+    <div class="header-right">
+    <% if @current_user %>
+      <p class="top_user_name"><%= @current_user.name %></p>
+      <img class="top_user_icon" src="<%= "/user_images/#{@current_user.image}" %>">
+      <ul id="accordion" class="accordion">
+        <li>
+          <div class="link">M E N U<i class="fa fa-chevron-down"></i></div>
+          <ul class="submenu">
+            <li><%= link_to("ルーム登録", "/posts/new") %></li>
+            <li><%= link_to("予約済ルーム一覧", "/reservations/#{@current_user.id}/index") %></li>
+            <li><%= link_to("登録済ルーム一覧", "/users/#{@current_user.id}/rooms") %></li>
+            <li><%= link_to("アカウント設定", "/users/#{@current_user.id}/account") %></li>
+            <li><%= link_to("ログアウト", "/logout", {method: "post"}) %></li>
+          </ul>
+        </li>
+      </ul>
+    <% else %>
+      <div class="header_right2">
+        <%= link_to("ログイン","/login",{class: "login-btn btn"})%>
+        <%= link_to("登録する","/signup",{class: "signup-btn btn"}) %>
+      </div>
+    <% end %>
+    </div>
+  
+  </div>
+  </header>
+  
+  <% if flash[:notice] %>
+    <div class="flash">
+    <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <%= yield %>
+  <footer class="footer">
+  <p>© 2020 POTEPAN.INC.</p>
+  </footer>
   </body>
 </html>
